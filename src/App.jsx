@@ -1,7 +1,14 @@
 import { Layout } from "./Layout";
 import { LogIn } from "./views/LogIn";
 import { SignUp } from "./views/SignUp";
+import { Dashboard } from "./views/Dashboard";
+
+import { Home } from "./views/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   const router = createBrowserRouter([
@@ -12,7 +19,7 @@ function App() {
       children: [
         {
           index: true,
-          element: <LogIn />,
+          element: <Home />,
         },
 
         {
@@ -23,10 +30,11 @@ function App() {
           path: "SignUp",
           element: <SignUp />,
         },
-        // {
-        //   path: "ForgotPassword",
-        //   element: <ForgotPassword />,
-        // },
+        {
+          path: "Dashboard",
+          element: <Dashboard />,
+        },
+
         // {
         //   path: "ResetPassword",
         //   element: <ResetPassword />,
@@ -51,7 +59,11 @@ function App() {
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

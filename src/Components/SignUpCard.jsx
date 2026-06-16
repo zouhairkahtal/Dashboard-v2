@@ -17,7 +17,8 @@ export function SignUpCard() {
             name="email"
             placeholder="Enter your email"
           />
-        </div>
+        </div>    
+        
         <div className="flex flex-col gap-2 ">
           <label className="text-gray-700" htmlFor="name">
             name:

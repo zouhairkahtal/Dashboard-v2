@@ -1,17 +1,21 @@
 import { NavLink } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
-
+import { useLogin } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 export function LogInCard() {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    navigate = useNavigate(),
   } = useForm();
 
-  const onSubmit = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+  const loginMutation = useLogin();
+
+  const onSubmit = (data) => {
+    loginMutation.mutate(data);
+    navigate("/Dashboard");
   };
 
   return (
@@ -57,11 +61,11 @@ export function LogInCard() {
             {...register("password", {
               required: "Password is required",
               minLength: {
-                value: 8,
-                message: "Password must be at least 8 characters long",
+                value: 6,
+                message: "Password must be at least 6 characters long",
               },
               pattern: {
-                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/,
+                value: 6,
                 message:
                   "Password must contain at least one letter and one number",
               },
