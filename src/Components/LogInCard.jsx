@@ -16,6 +16,7 @@ export function LogInCard() {
   const onSubmit = (data) => {
     loginMutation.mutate(data);
     navigate("/Dashboard");
+    console.log(data && localStorage.getItem("token"));
   };
 
   return (

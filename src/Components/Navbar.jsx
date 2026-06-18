@@ -8,16 +8,10 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const navLinks = localStorage.getItem("token")
-    ? [
-        { name: "Dashboard", path: "/Dashboard" },
-        { name: "Budgets", path: "/BudgetForm" },
-      ]
-    : [
-        { name: "Home", path: "/" },
-        { name: "Dashboard", path: "/Dashboard" },
-        { name: "Budgets", path: "/BudgetForm" },
-      ];
+  const navLinks = [
+    { name: "Dashboard", path: "/Dashboard" },
+    { name: "Budgets", path: "/Budgets" },
+  ];
 
   return (
     <nav className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,6 +47,17 @@ const Navbar = () => {
               <NavLink
                 key={link.name}
                 to={link.path}
+                style={
+                  localStorage.getItem("token")
+                    ? {
+                        pointerEvents: "auto",
+                        opacity: 1,
+                      }
+                    : {
+                        pointerEvents: "none",
+                        opacity: 0.5,
+                      }
+                }
                 className={({ isActive }) =>
                   `px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
                     isActive

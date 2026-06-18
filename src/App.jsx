@@ -2,7 +2,7 @@ import { Layout } from "./Layout";
 import { LogIn } from "./views/LogIn";
 import { SignUp } from "./views/SignUp";
 import { Dashboard } from "./views/Dashboard";
-
+import { Budgets } from "./views/Budgets";
 import { Home } from "./views/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -34,19 +34,10 @@ function App() {
           path: "Dashboard",
           element: <Dashboard />,
         },
-
-        // {
-        //   path: "ResetPassword",
-        //   element: <ResetPassword />,
-        // },
-        // {
-        //   path: "Dashboard",
-        //   element: <Dashboard />,
-        // },
-        // {
-        //   path: "BudgetForm",
-        //   element: <BudgetForm />,
-        // },
+        {
+          path: "Budgets",
+          element: <Budgets />,
+        },
 
         {
           path: "*",
