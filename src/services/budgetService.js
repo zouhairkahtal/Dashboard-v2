@@ -17,3 +17,16 @@ export const createBudget = async (budgets) => {
 
   return response.data;
 };
+// export const updateBudget = async (id) => {
+//   const response = await api.put(`/budget/${id}`);
+
+//   return response.data;
+// };
+
+export const updateBudget = async (budget) => {
+  const { id, ...data } = budget;
+
+  const response = await api.put(`/budgets/${id}`, data);
+
+  return response.data;
+};

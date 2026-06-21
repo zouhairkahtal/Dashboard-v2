@@ -10,6 +10,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
+import { Toaster } from "react-hot-toast";
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -52,6 +54,7 @@ function App() {
   ]);
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster position="top-right" />
       <RouterProvider router={router} />
     </QueryClientProvider>
   );
